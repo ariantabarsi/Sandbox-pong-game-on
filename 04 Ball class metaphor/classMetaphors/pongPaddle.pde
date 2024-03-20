@@ -9,10 +9,12 @@
   float RacketTravel;
   boolean RacketUp = false, RacketDown = false;//keyPressed in draw
   color RacketColor;
+  color playAreaColor = color(0, 0, 0);
+
   //
   Racket(float startPositionParameter, float ballDiameterParameter) {
     knotWidth = (ballDiameterParameter*3);
-    RacketWidth = (ballDiameterParameter/2); //Ball Radius
+    this.RacketWidth = (ballDiameterParameter/2); //Ball Radius
     playAreaY = height/10;//smallest Y value for Racket movement
     playAreaHeight = (height*4)/5;
     if ( startPositionParameter == 0 ) knotX = startPositionParameter; //Adding to the knotX
@@ -23,9 +25,23 @@
     this.RacketHeight = (playAreaHeight * RacketStartHeight);
     this.RacketY = playAreaY + (playAreaHeight/2) - (RacketHeight/2);
     this.RacketTravel = (playAreaHeight/50);//Racket speed
-    this.RacketColor = color (int(random(0,255)), int(random(0,255)), int(random(0,255)));
+    this.RacketColor = color(255, 255, 255);
   }//end Racket(float, float)
   //
+  Racket() {
+    drawPlayAreaPolulation();
+  }//end Racket()
+  void drawPlayAreaPolulation() {
+    playAreaX = 0;
+    playAreaY = height/10;
+    playAreaWidth = (width)-1;
+    playAreaHeight = (height * 4)/5;
+  }//end drawPlayAreaPolulation
+  void drawPlayArea() {
+    fill(playAreaColor);
+    noStroke();
+    rect(playAreaX, playAreaY, playAreaWidth, playAreaHeight);
+  }//end drawPlayArea
   void drawRacket() {
     fill(RacketColor);
     noStroke();

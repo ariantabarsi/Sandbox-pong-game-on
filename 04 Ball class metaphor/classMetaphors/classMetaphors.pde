@@ -2,35 +2,38 @@
 Ball firstBall; //Both halfs of Constructor
 Ball cheatBall;//appears when clicked
 Ball[] firework = new Ball[10];//generates multiple balls that fall with gravity
-Racket firstRacket, secondRacket;
+Racket pongPlayArea, firstRacket, secondRacket;
 color backgroundColor;
 color pongTableColor = 255;
 //
 void setup() {
+  fullScreen();
   size( 700, 400 );//width and height of canvas //fullscreen(); = size(displayWidth, displayHeight);
   /*ScreenSizeChecker(); //for landscape, portrait or square veiw 
   Automatically adjusts for screen rotaction or change*/
   firstBall = new Ball();
   cheatBall = new Ball(width*-1, height*-1, firstBall.ballDiameter, firstBall.ballColor, firstBall.xVelocity, firstBall.yVelocity);
   for (int i=0; i < firework.length; i++) firework[i] = new Ball(width*-1, height*-1, (1/2));//populating firework
+  pongPlayArea = new Racket();
   firstRacket = new Racket( 0, firstBall.ballDiameter );
   secondRacket = new Racket( width, firstBall.ballDiameter );
   firstBall.disappear = false;
-  backgroundColor = color(int(random(0, 255)), int(random(0,255)), int(random(0,255)));
+  backgroundColor = color(100, 100, 100);
 }//end setup
 //
 void draw() {
   background(backgroundColor);
+  pongPlayArea.drawPlayArea();
   firstRacket.drawRacket();
   secondRacket.drawRacket();
   firstRacket.RacketMove();
   secondRacket.RacketMove();
- // for (int i=0; i < firework.length; i++) firework[i].ballDraw(); //drawing multiple balls
-  //explosions();
+  for (int i=0; i < firework.length; i++) firework[i].ballDraw(); //drawing multiple balls
+  explosions();
   if (firstBall.disappear) {/*empty if*/} else firstBall.ballDraw();
   if (cheatBall.disappear) {/*empty if*/} else cheatBall.ballDraw();
-  //float playAreaYLocal, float playAreaHeightLocal, float playAreaWidthLocal, float playAreaXLocal, float RacketXLocal, float RacketYLocal, float RacketWidthLocal, float RacketHeightLocal
   firstBall.collisionsUpdate(firstRacket.playAreaY, firstRacket.playAreaHeight, firstRacket.playAreaWidth, firstRacket.playAreaX, firstRacket.RacketX, firstRacket.RacketY, firstRacket.RacketWidth, firstRacket.RacketHeight, firstRacket.RacketWidth, secondRacket.RacketWidth, firstRacket.RacketHeight, secondRacket.RacketHeight);
+  //println(firstRacket.playAreaY, firstRacket.playAreaHeight, firstRacket.playAreaWidth, firstRacket.playAreaX, firstRacket.RacketX, firstRacket.RacketY, firstRacket.RacketWidth, firstRacket.RacketHeight, firstRacket.RacketX, secondRacket.RacketX, firstRacket.RacketY, secondRacket.RacketY);
 }//end draw
 //
 void keyPressed() {
@@ -45,13 +48,13 @@ void keyReleased() {
 }
 //
 void mousePressed() {
-  for (int i=0; i < firework.length; i++) firework[i] = new Ball(int(mouseX), int(mouseY), 0.5);//populating firework
+  //for (int i=0; i < firework.length; i++) firework[i] = new Ball(int(mouseX), int(mouseY), 0.5);//populating firework
   cheatBall = new Ball(mouseX, mouseY, firstBall.ballDiameter, firstBall.ballColor, firstBall.xVelocity, firstBall.yVelocity);//initiates after mousePressed
 }//end mousepressed
 //
 void explosions() { //firework effect when goal region hit
   if (mousePressed) cheatBall.disappear  = false;
-  if (firstBall.ballX <= (firstBall.ballDiameter/2) || firstBall.ballX >= (width)-(firstBall.ballDiameter/2)) {
+  /*if (firstBall.ballX <= (firstBall.ballDiameter/2) || firstBall.ballX >= (width)-(firstBall.ballDiameter/2)) {
     for (int i=0; i < firework.length; i++) 
     firework[i] = new Ball(firstBall.ballX, firstBall.ballY, 0.5); //drawing multiple balls
   }
@@ -60,7 +63,7 @@ void explosions() { //firework effect when goal region hit
       for (int i=0; i < firework.length; i++) 
       firework[i] = new Ball(cheatBall.ballX, cheatBall.ballY, 0.5); //drawing multiple balls
     }
-  }
+  }*/
 }//end explosions
 //
 void ballCollisions() {
