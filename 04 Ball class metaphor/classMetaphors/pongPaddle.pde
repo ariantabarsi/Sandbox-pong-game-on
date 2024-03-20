@@ -1,64 +1,64 @@
 /* known ERRORs
  - To be implemented
 */
- class Paddle {
+ class Racket {
   //Global Variables
   float playAreaWidth, playAreaHeight, playAreaX, playAreaY;
   float knotX, knotY, knotWidth, knotHeight;
-  float paddleX, paddleY, paddleWidth, paddleHeight, paddleStartHeight;
-  float paddleTravel;
-  boolean paddleUp = false, paddleDown = false;//keyPressed in draw
-  color paddleColor;
+  float RacketX, RacketY, RacketWidth, RacketHeight, RacketStartHeight;
+  float RacketTravel;
+  boolean RacketUp = false, RacketDown = false;//keyPressed in draw
+  color RacketColor;
   //
-  Paddle(float startPositionParameter, float ballDiameterParameter) {
+  Racket(float startPositionParameter, float ballDiameterParameter) {
     knotWidth = (ballDiameterParameter*3);
-    paddleWidth = (ballDiameterParameter/2); //Ball Radius
-    playAreaY = height/10;//smallest Y value for paddle movement
+    RacketWidth = (ballDiameterParameter/2); //Ball Radius
+    playAreaY = height/10;//smallest Y value for Racket movement
     playAreaHeight = (height*4)/5;
     if ( startPositionParameter == 0 ) knotX = startPositionParameter; //Adding to the knotX
-    if ( startPositionParameter == width ) knotX = startPositionParameter - (knotWidth*2) - paddleWidth; //Subtracting the knotX
-    this.paddleX = knotX + knotWidth; //netX has two values, fix ERROR
+    if ( startPositionParameter == width ) knotX = startPositionParameter - (knotWidth*2) - RacketWidth; //Subtracting the knotX
+    this.RacketX = knotX + knotWidth; //netX has two values, fix ERROR
     if ( startPositionParameter == width ) knotX = startPositionParameter - knotWidth;
-    this.paddleStartHeight = ( 0.25 );//has to be decimal
-    this.paddleHeight = (playAreaHeight * paddleStartHeight);
-    this.paddleY = playAreaY + (playAreaHeight/2) - (paddleHeight/2);
-    this.paddleTravel = (playAreaHeight/50);//paddle speed
-    this.paddleColor = color (int(random(0,255)), int(random(0,255)), int(random(0,255)));
-  }//end paddle(float, float)
+    this.RacketStartHeight = ( 0.25 );//has to be decimal
+    this.RacketHeight = (playAreaHeight * RacketStartHeight);
+    this.RacketY = playAreaY + (playAreaHeight/2) - (RacketHeight/2);
+    this.RacketTravel = (playAreaHeight/50);//Racket speed
+    this.RacketColor = color (int(random(0,255)), int(random(0,255)), int(random(0,255)));
+  }//end Racket(float, float)
   //
-  void drawPaddle() {
-    fill(paddleColor);
+  void drawRacket() {
+    fill(RacketColor);
     noStroke();
-    rect(paddleX, paddleY, paddleWidth, paddleHeight);
+    rect(RacketX, RacketY, RacketWidth, RacketHeight);
     fill(0);
-  }//end drawPaddle
-  void paddleMove() {
-    if (paddleUp) paddleUp();
-    if (paddleDown) paddleDown();
+  }//end drawRacket
+  void RacketMove() {
+    if (RacketUp) RacketUp();
+    if (RacketDown) RacketDown();
   }
-  void paddleUp() {
-    paddleY -= (paddleTravel);//moving up
-    if (paddleY < playAreaY) paddleY = playAreaY;//error catch: will not go off screen
-  }//paddleUp
-  void paddleDown() {
-    paddleY += (paddleTravel);//moving down
-    if (paddleY > playAreaY+playAreaHeight-paddleHeight) paddleY = playAreaY+playAreaHeight-paddleHeight;//error catch: will not go off screen
-  }//end paddleDown
-  void paddleKeyPressedWASD() {
-    if (key == 'w' || key == 'W') firstPaddle.paddleUp = true;
-    if (key == 's' || key == 'S') firstPaddle.paddleDown = true; 
+  void RacketUp() {
+    RacketY -= (RacketTravel);//moving up
+    if (RacketY < playAreaY) RacketY = playAreaY;//error catch: will not go off screen
+  }//RacketUp
+  void RacketDown() {
+    RacketY += (RacketTravel);//moving down
+    if (RacketY > playAreaY+playAreaHeight-RacketHeight) RacketY = playAreaY+playAreaHeight-RacketHeight;//error catch: will not go off screen
+  }//end RacketDown
+  void RacketKeyPressedWASD() {
+    if (key == 'w' || key == 'W') firstRacket.RacketUp = true;
+    if (key == 's' || key == 'S') firstRacket.RacketDown = true; 
   }
-  void paddleKeyPressedARROWKEYS() {
-    if (key == CODED & keyCode == UP) secondPaddle.paddleUp = true;
-    if (key == CODED & keyCode == DOWN) secondPaddle.paddleDown = true;
+  void RacketKeyPressedARROWKEYS() {
+    if (key == CODED & keyCode == UP) secondRacket.RacketUp = true;
+    if (key == CODED & keyCode == DOWN) secondRacket.RacketDown = true;
   }
-  void paddleKeyReleasedWSAD() {
-    if (key == 'w' || key == 'W') firstPaddle.paddleUp = false;
-    if (key == 's' || key == 'S') firstPaddle.paddleDown = false; 
+  void RacketKeyReleasedWSAD() {
+    if (key == 'w' || key == 'W') firstRacket.RacketUp = false;
+    if (key == 's' || key == 'S') firstRacket.RacketDown = false; 
   }
-  void paddleKeyReleasedARROWKEYS() {
-    if (key == CODED & keyCode == UP) secondPaddle.paddleUp = false;
-    if (key == CODED & keyCode == DOWN) secondPaddle.paddleDown = false;
+  void RacketKeyReleasedARROWKEYS() {
+    if (key == CODED & keyCode == UP) secondRacket.RacketUp = false;
+    if (key == CODED & keyCode == DOWN) secondRacket.RacketDown = false;
   }
-}//end Paddle
-//end pongPaddle
+}//end Racket
+//end pongRacket

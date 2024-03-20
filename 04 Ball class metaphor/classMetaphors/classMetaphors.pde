@@ -2,7 +2,7 @@
 Ball firstBall; //Both halfs of Constructor
 Ball cheatBall;//appears when clicked
 Ball[] firework = new Ball[10];//generates multiple balls that fall with gravity
-Paddle firstPaddle, secondPaddle;
+Racket firstRacket, secondRacket;
 color backgroundColor;
 color pongTableColor = 255;
 //
@@ -13,35 +13,35 @@ void setup() {
   firstBall = new Ball();
   cheatBall = new Ball(width*-1, height*-1, firstBall.ballDiameter, firstBall.ballColor, firstBall.xVelocity, firstBall.yVelocity);
   for (int i=0; i < firework.length; i++) firework[i] = new Ball(width*-1, height*-1, (1/2));//populating firework
-  firstPaddle = new Paddle( 0, firstBall.ballDiameter );
-  secondPaddle = new Paddle( width, firstBall.ballDiameter );
+  firstRacket = new Racket( 0, firstBall.ballDiameter );
+  secondRacket = new Racket( width, firstBall.ballDiameter );
   firstBall.disappear = false;
   backgroundColor = color(int(random(0, 255)), int(random(0,255)), int(random(0,255)));
 }//end setup
 //
 void draw() {
   background(backgroundColor);
-  firstPaddle.drawPaddle();
-  secondPaddle.drawPaddle();
-  firstPaddle.paddleMove();
-  secondPaddle.paddleMove();
-  for (int i=0; i < firework.length; i++) firework[i].ballDraw(); //drawing multiple balls
-  explosions();
+  firstRacket.drawRacket();
+  secondRacket.drawRacket();
+  firstRacket.RacketMove();
+  secondRacket.RacketMove();
+ // for (int i=0; i < firework.length; i++) firework[i].ballDraw(); //drawing multiple balls
+  //explosions();
   if (firstBall.disappear) {/*empty if*/} else firstBall.ballDraw();
   if (cheatBall.disappear) {/*empty if*/} else cheatBall.ballDraw();
-  //float playAreaYLocal, float playAreaHeightLocal, float playAreaWidthLocal, float playAreaXLocal, float paddleXLocal, float paddleYLocal, float paddleWidthLocal, float paddleHeightLocal
-  firstBall.collisionsUpdate(firstPaddle.playAreaY, firstPaddle.playAreaHeight, firstPaddle.playAreaWidth, firstPaddle.playAreaX, firstPaddle.paddleX, firstPaddle.paddleY, firstPaddle.paddleWidth, firstPaddle.paddleHeight, firstPaddle.paddleWidth, secondPaddle.paddleWidth, firstPaddle.paddleHeight, secondPaddle.paddleHeight);
+  //float playAreaYLocal, float playAreaHeightLocal, float playAreaWidthLocal, float playAreaXLocal, float RacketXLocal, float RacketYLocal, float RacketWidthLocal, float RacketHeightLocal
+  firstBall.collisionsUpdate(firstRacket.playAreaY, firstRacket.playAreaHeight, firstRacket.playAreaWidth, firstRacket.playAreaX, firstRacket.RacketX, firstRacket.RacketY, firstRacket.RacketWidth, firstRacket.RacketHeight, firstRacket.RacketWidth, secondRacket.RacketWidth, firstRacket.RacketHeight, secondRacket.RacketHeight);
 }//end draw
 //
 void keyPressed() {
   if (key == '1') firstBall.disappear = true;
   if (key == '2') cheatBall.disappear = true;
-  firstPaddle.paddleKeyPressedWASD();
-  secondPaddle.paddleKeyPressedARROWKEYS();
+  firstRacket.RacketKeyPressedWASD();
+  secondRacket.RacketKeyPressedARROWKEYS();
 }//end keyPressed
 void keyReleased() {
-  firstPaddle.paddleKeyReleasedWSAD();
-  secondPaddle.paddleKeyReleasedARROWKEYS();
+  firstRacket.RacketKeyReleasedWSAD();
+  secondRacket.RacketKeyReleasedARROWKEYS();
 }
 //
 void mousePressed() {
