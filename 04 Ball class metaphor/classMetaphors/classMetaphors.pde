@@ -3,8 +3,10 @@ Ball firstBall; //Both halfs of Constructor
 Ball cheatBall;//appears when clicked
 Ball[] firework = new Ball[10];//generates multiple balls that fall with gravity
 Racket pongPlayArea, firstRacket, secondRacket;
+PImage ballImage;
+PImage ballImg;
 color backgroundColor;
-color pongTableColor = 255;
+color pongTableColor = #40AEE3;
 //
 void setup() {
   fullScreen();
@@ -18,12 +20,17 @@ void setup() {
   firstRacket = new Racket( 0, firstBall.ballDiameter );
   secondRacket = new Racket( width, firstBall.ballDiameter );
   firstBall.disappear = false;
-  backgroundColor = color(100, 100, 100);
+  backgroundColor = color(#66C3F0);
+  ballImage = loadImage("Capture1-removebg-preview.png");
+  ballImg = loadImage ("output-onlinepngtools.png");
+  Ball newBall = new Ball(ballImage);
 }//end setup
 //
 void draw() {
   background(backgroundColor);
-  pongPlayArea.drawPlayArea();
+    pongPlayArea.drawPlayArea();
+   image(ballImg, LEFT * 25, RIGHT * 15, width/2, height/2);
+
   firstRacket.drawRacket();
   secondRacket.drawRacket();
   firstRacket.RacketMove();
@@ -33,6 +40,12 @@ void draw() {
   if (firstBall.disappear) {/*empty if*/} else firstBall.ballDraw();
   if (cheatBall.disappear) {/*empty if*/} else cheatBall.ballDraw();
   firstBall.collisionsUpdate(firstRacket.playAreaY, firstRacket.playAreaHeight, firstRacket.playAreaWidth, firstRacket.playAreaX, firstRacket.RacketX, firstRacket.RacketY, firstRacket.RacketWidth, firstRacket.RacketHeight, firstRacket.RacketWidth, secondRacket.RacketWidth, firstRacket.RacketHeight, secondRacket.RacketHeight);
+  textSize(50); // Example size, adjust as needed
+  textAlign(CENTER, TOP); // Center the text horizontally at the top
+  fill(0); // Example color (black), adjust TballX, ballY, ballDiameter, ballDiameter);
+  text("Pawng Patrol", width / 2, 10);
+  imageMode(CENTER);
+   
   //println(firstRacket.playAreaY, firstRacket.playAreaHeight, firstRacket.playAreaWidth, firstRacket.playAreaX, firstRacket.RacketX, firstRacket.RacketY, firstRacket.RacketWidth, firstRacket.RacketHeight, firstRacket.RacketX, secondRacket.RacketX, firstRacket.RacketY, secondRacket.RacketY);
 }//end draw
 //

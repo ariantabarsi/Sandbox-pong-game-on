@@ -12,6 +12,16 @@ class Ball {
   boolean inRange;
   color ballColor;
   PImage img;
+  // Adjusted Constructor
+  Ball(PImage img) {
+    this.img = img; // Assign the passed image to the ball's image variable
+  }
+  
+  // Adjusted cheatBall and Firework Constructors
+  Ball(float ballXLocal, float ballYLocal, float ballDiameterParameter, color ballColorParameter, float xVelocityLocal, float yVelocityLocal, PImage img) {
+    // Initialization code
+    this.img = img; // Assign the image
+  }
   //Ball Constructor
   Ball() {
     //code for all balls
@@ -25,8 +35,8 @@ class Ball {
     this.ballColor = color(255, 255, 255);
     this.xDelta = width/(width);//speed of ball
     this.yDelta = height/(height);//speed of ball
-    this.xVelocity = yDirection();
-    this.yVelocity = xDirection();
+    this.xVelocity = yDirection() * 3;
+    this.yVelocity = xDirection() * 3;
   }//end Ball hard coded constructor
   //cheatBall Constructor
   Ball(float ballXLocal, float ballYLocal, float ballDiameterParameter, color ballColorParameter, float xVelocityLocal, float yVelocityLocal) {
@@ -72,13 +82,13 @@ class Ball {
   }//end bounce
   void ballDraw() {
     stroke(ballColor);
-    fill(ballColor);
-    ellipse( ballX, ballY, ballDiameter, ballDiameter );
-    fill(0);
-    img = loadImage("Capture1-removebg-preview.png");
-    imageMode(CENTER); // Draw the image from its center
-     image(img, ballX, ballY, ballDiameter, ballDiameter); // Draw the image at
-    animatingMovement();//manipulating the variables
+  fill(ballColor);
+  ellipse(ballX, ballY, ballDiameter, ballDiameter);
+  fill(0);
+  // The image is now already loaded, just draw it
+  imageMode(CENTER);
+  image( ballImage, ballX, ballY, ballDiameter, ballDiameter);
+  animatingMovement();
   }//end draw for ball constructor
   void animatingMovement() {
     yVelocity += gravity;//ball() uneffected thus no gravity = constructor has no gravity variable
