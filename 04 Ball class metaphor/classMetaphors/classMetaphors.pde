@@ -5,8 +5,9 @@ Ball[] firework = new Ball[10];//generates multiple balls that fall with gravity
 Racket pongPlayArea, firstRacket, secondRacket;
 PImage ballImage;
 PImage ballImg;
+PImage pastaImg;
 color backgroundColor;
-color pongTableColor = #40AEE3;
+color pongTableColor = #C93535;
 //
 void setup() {
   fullScreen();
@@ -20,16 +21,18 @@ void setup() {
   firstRacket = new Racket( 0, firstBall.ballDiameter );
   secondRacket = new Racket( width, firstBall.ballDiameter );
   firstBall.disappear = false;
-  backgroundColor = color(#66C3F0);
+  backgroundColor = color(#C93535);
   ballImage = loadImage("Capture1-removebg-preview.png");
-  ballImg = loadImage ("output-onlinepngtools.png");
+  ballImg = loadImage ("fork-cartoon-vector-6335190-removebg-preview.png");
+  pastaImg = loadImage ("istockphoto-1145689916-612x612-removebg-preview.png");
+  //forkimg = loadImage ("
   Ball newBall = new Ball(ballImage);
 }//end setup
 //
 void draw() {
   background(backgroundColor);
     pongPlayArea.drawPlayArea();
-   image(ballImg, LEFT * 25, RIGHT * 15, width/2, height/2);
+   image(pastaImg, LEFT * 25, RIGHT * 15, width/2, height/2);
 
   firstRacket.drawRacket();
   secondRacket.drawRacket();
@@ -44,7 +47,7 @@ void draw() {
   textAlign(CENTER, TOP); // Center the text horizontally at the top
   fill(0); // Example color (black), adjust TballX, ballY, ballDiameter, ballDiameter);
   text("Pawng Patrol", width / 2, 10);
-  imageMode(CENTER);
+
    
   //println(firstRacket.playAreaY, firstRacket.playAreaHeight, firstRacket.playAreaWidth, firstRacket.playAreaX, firstRacket.RacketX, firstRacket.RacketY, firstRacket.RacketWidth, firstRacket.RacketHeight, firstRacket.RacketX, secondRacket.RacketX, firstRacket.RacketY, secondRacket.RacketY);
 }//end draw

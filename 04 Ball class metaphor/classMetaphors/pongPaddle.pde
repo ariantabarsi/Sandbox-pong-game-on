@@ -8,8 +8,8 @@
   float RacketX, RacketY, RacketWidth, RacketHeight, RacketStartHeight;
   float RacketTravel;
   boolean RacketUp = false, RacketDown = false;//keyPressed in draw
-  color RacketColor;
-  color playAreaColor = color(#40AEE3);
+  color RacketColor = color(#A01717);
+  color playAreaColor = color(#A01717);
 
   //
   Racket(float startPositionParameter, float ballDiameterParameter) {
@@ -25,7 +25,7 @@
     this.RacketHeight = (playAreaHeight * RacketStartHeight);
     this.RacketY = playAreaY + (playAreaHeight/2) - (RacketHeight/2);
     this.RacketTravel = (playAreaHeight/50);//Racket speed
-    this.RacketColor = color(255, 255, 255);
+    this.RacketColor = color(#A01717);
   }//end Racket(float, float)
   //
   Racket() {
@@ -47,6 +47,8 @@
     noStroke();
     rect(RacketX, RacketY, RacketWidth, RacketHeight);
     fill(0);
+         imageMode(CENTER);
+  image( ballImg, RacketX +  RacketWidth/2, RacketY + RacketHeight/2, RacketWidth * 10, RacketHeight * 1.23);
   }//end drawRacket
   void RacketMove() {
     if (RacketUp) RacketUp();

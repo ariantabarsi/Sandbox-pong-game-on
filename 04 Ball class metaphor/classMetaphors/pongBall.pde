@@ -35,8 +35,8 @@ class Ball {
     this.ballColor = color(255, 255, 255);
     this.xDelta = width/(width);//speed of ball
     this.yDelta = height/(height);//speed of ball
-    this.xVelocity = yDirection() * 3;
-    this.yVelocity = xDirection() * 3;
+    this.xVelocity = yDirection() * 5;
+    this.yVelocity = xDirection() * 5;
   }//end Ball hard coded constructor
   //cheatBall Constructor
   Ball(float ballXLocal, float ballYLocal, float ballDiameterParameter, color ballColorParameter, float xVelocityLocal, float yVelocityLocal) {
@@ -54,8 +54,8 @@ class Ball {
     this.ballY = ballYLocal;
     this.ballColor = color(255, 255, 255);
     this.ballDiameter = random(firstBall.ballDiameter/1.1);
-    this.xVelocity = random(-5, 5);
-    this.yVelocity = random(-5, 5);
+    this.xVelocity = random(-10, 10);
+    this.yVelocity = random(-10, 10);
     gravity = gravityLocal;
   }//end Firework Constructor
   float xDirection() {
