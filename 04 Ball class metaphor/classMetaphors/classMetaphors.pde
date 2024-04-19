@@ -22,7 +22,7 @@ void setup() {
   secondRacket = new Racket( width, firstBall.ballDiameter );
   firstBall.disappear = false;
   backgroundColor = color(#C93535);
-  ballImage = loadImage("Capture1-removebg-preview.png");
+  ballImage = loadImage("downloadremovebg-preview.png");
   ballImg = loadImage ("fork-cartoon-vector-6335190-removebg-preview.png");
   pastaImg = loadImage ("istockphoto-1145689916-612x612-removebg-preview.png");
   //forkimg = loadImage ("
@@ -46,7 +46,7 @@ void draw() {
   textSize(50); // Example size, adjust as needed
   textAlign(CENTER, TOP); // Center the text horizontally at the top
   fill(0); // Example color (black), adjust TballX, ballY, ballDiameter, ballDiameter);
-  text("Pawng Patrol", width / 2, 10);
+  text("you're lucky you're cute", width / 2, 10);
 
    
   //println(firstRacket.playAreaY, firstRacket.playAreaHeight, firstRacket.playAreaWidth, firstRacket.playAreaX, firstRacket.RacketX, firstRacket.RacketY, firstRacket.RacketWidth, firstRacket.RacketHeight, firstRacket.RacketX, secondRacket.RacketX, firstRacket.RacketY, secondRacket.RacketY);

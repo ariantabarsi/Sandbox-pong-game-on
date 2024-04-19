@@ -9,7 +9,7 @@
   float RacketTravel;
   boolean RacketUp = false, RacketDown = false;//keyPressed in draw
   color RacketColor = color(#A01717);
-  color playAreaColor = color(#A01717);
+  color playAreaColor = color(#41B936);
 
   //
   Racket(float startPositionParameter, float ballDiameterParameter) {
@@ -45,7 +45,7 @@
   void drawRacket() {
     fill(RacketColor);
     noStroke();
-    rect(RacketX, RacketY, RacketWidth, RacketHeight);
+    //rect(RacketX, RacketY, RacketWidth, RacketHeight);
     fill(0);
          imageMode(CENTER);
   image( ballImg, RacketX +  RacketWidth/2, RacketY + RacketHeight/2, RacketWidth * 10, RacketHeight * 1.23);
