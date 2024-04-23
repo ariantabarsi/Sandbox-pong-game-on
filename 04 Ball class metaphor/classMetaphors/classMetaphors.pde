@@ -46,7 +46,7 @@ void draw() {
   textSize(50); // Example size, adjust as needed
   textAlign(CENTER, TOP); // Center the text horizontally at the top
   fill(0); // Example color (black), adjust TballX, ballY, ballDiameter, ballDiameter);
-  text("you're lucky you're cute", width / 2, 10);
+  text("pastong", width / 2, 10);
 
    
   //println(firstRacket.playAreaY, firstRacket.playAreaHeight, firstRacket.playAreaWidth, firstRacket.playAreaX, firstRacket.RacketX, firstRacket.RacketY, firstRacket.RacketWidth, firstRacket.RacketHeight, firstRacket.RacketX, secondRacket.RacketX, firstRacket.RacketY, secondRacket.RacketY);
