@@ -6,8 +6,8 @@ Racket pongPlayArea, firstRacket, secondRacket;
 PImage ballImage;
 PImage ballImg;
 PImage pastaImg;
-color backgroundColor;
-color pongTableColor = #C93535;
+color backgroundColor = #BA263B;//#F03CED//BA263B
+color pongTableColor = #BC4251;
 //
 void setup() {
   fullScreen();
@@ -21,7 +21,6 @@ void setup() {
   firstRacket = new Racket( 0, firstBall.ballDiameter );
   secondRacket = new Racket( width, firstBall.ballDiameter );
   firstBall.disappear = false;
-  backgroundColor = color(#C93535);
   ballImage = loadImage("downloadremovebg-preview.png");
   ballImg = loadImage ("fork-cartoon-vector-6335190-removebg-preview.png");
   pastaImg = loadImage ("istockphoto-1145689916-612x612-removebg-preview.png");
